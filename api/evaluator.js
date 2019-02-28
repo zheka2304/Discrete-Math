@@ -1,0 +1,1 @@
+alert("HELLO WORLD" + GIT_REPOSITORY_URL);

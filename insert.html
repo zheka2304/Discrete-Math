@@ -1,0 +1,104 @@
+<html>
+<body id="root">
+	<script type="text/javascript">
+		/* ALL LINKS AND CONSTANTS ARE STORED HERE */
+		// path to source code
+		const SOURCE_PATH = "homework/eugene/hw-1.js"
+		
+		// path to boot modules JSON list
+		const BOOT_MODULES_PATH = "api/boot_modules.json"
+		// link to github with raw 
+		const GIT_REPOSITORY_URL = "https://raw.githubusercontent.com/zheka2304/Discrete-Math/master/"
+	</script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+	<script type="text/javascript">
+		function load_url_content(url) {
+			if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+				xmlhttp = new XMLHttpRequest();
+			}
+			else { // code for IE6, IE5
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			
+			xmlhttp.open("GET", url, false);
+			xmlhttp.send();
+			return xmlhttp.responseText;
+		}
+		
+		function get_module_list(url) {
+			try {
+				return JSON.parse(load_url_content(url));
+			} catch(err) {
+				alert("failed to read module list from " + url + " error=" + err);
+				return [];
+			}
+		}
+		
+		function get_root_content() {
+			return document.getElementById("root").innerHTML;
+		}
+		
+		function set_root_content(html) {
+			document.getElementById("root").innerHTML = html;
+		}
+		
+		
+		
+		function Executable(params) {
+			this.source = null;
+			this.exception = null;
+			this.is_evaluated = false;
+			
+			if (params.source) {
+				this.source = params.source;
+			}
+			
+			if (params.url) {
+				this.source = load_url_content(params.url); 
+			}
+			
+			this.load = function() {
+				try {
+					eval(this.source);
+					this.is_evaluated = true;
+				} catch (err) {
+					this.exception = err;
+				}
+			}
+			
+			this.log = function() {
+				
+			}
+		}
+		
+		
+		
+		
+		function on_load() {
+			set_root_content(load_url_content(GIT_REPOSITORY_URL + BOOT_MODULES_PATH));
+			
+			var boot_modules = []
+			for (var boot_module in load_module_list(GIT_REPOSITORY_URL + BOOT_MODULES_PATH)) {
+				boot_modules.append(new Executable({
+					url: GIT_REPOSITORY_URL + boot_module
+				});
+			}
+			
+			for (var boot_module in boot_modules) {
+				boot_module.load();
+			}
+		}
+
+		window.onload = function() {
+			try { 
+				on_load();
+			} catch(error) {
+				alert("error ocurred: " + error)
+			}
+		};
+	</script>
+
+</body>
+</html>
