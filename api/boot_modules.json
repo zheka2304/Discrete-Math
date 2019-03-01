@@ -1,3 +1,4 @@
 [
+	"api/design.js",
 	"api/evaluator.js"
 ]
