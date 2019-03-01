@@ -7,31 +7,44 @@
 		
 		// path to boot modules JSON list
 		const BOOT_MODULES_PATH = "api/boot_modules.json"
+		
+		// path to api modules JSON list
+		const API_MODULES_PATH = "api/api_modules.json"
+		
 		// link to github with raw 
-		const GIT_REPOSITORY_URL = "https://raw.githubusercontent.com/zheka2304/Discrete-Math/master/"
+		const GIT_REPOSITORY_URL = "http://localhost/"; //"https://raw.githubusercontent.com/zheka2304/Discrete-Math/master/"
 	</script>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
 	<script type="text/javascript">
+
 		function load_url_content(url) {
-			if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
-				xmlhttp = new XMLHttpRequest();
-			}
-			else { // code for IE6, IE5
-				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-			}
-			
-			xmlhttp.open("GET", url, false);
-			xmlhttp.send();
-			return xmlhttp.responseText;
+			var result = null;
+			$.ajax({
+				url: url,
+				type: "GET",
+				dataType: 'text',
+				async: false,
+				
+				success: function(res) {
+					result = res;
+				},
+				
+				error: function(res) {
+					alert("error " + JSON.stringify(res))
+				}
+			});
+			return result;
 		}
 		
 		function get_module_list(url) {
+			var content = null;
 			try {
-				return JSON.parse(load_url_content(url));
+				content = load_url_content(url);
+				return JSON.parse(content);
 			} catch(err) {
-				alert("failed to read module list from " + url + " error=" + err);
+				alert("failed to read module list from " + url + " error=" + err + " content=" + content);
 				return [];
 			}
 		}
@@ -77,18 +90,19 @@
 		
 		
 		function on_load() {
-			set_root_content(load_url_content(GIT_REPOSITORY_URL + BOOT_MODULES_PATH));
-			
-			var boot_modules = []
-			for (var boot_module in load_module_list(GIT_REPOSITORY_URL + BOOT_MODULES_PATH)) {
-				boot_modules.append(new Executable({
-					url: GIT_REPOSITORY_URL + boot_module
+			var boot_modules = [];
+			get_module_list(GIT_REPOSITORY_URL + BOOT_MODULES_PATH).map(function(path) {
+				boot_modules[boot_modules.length] = new Executable({
+					url: GIT_REPOSITORY_URL + path
 				});
-			}
+			});
 			
-			for (var boot_module in boot_modules) {
-				boot_module.load();
-			}
+			boot_modules.map(function(module) {
+				module.load();
+				if (module.exception != null) {
+					alert("error in module: " + module.exception);
+				}
+			});
 		}
 
 		window.onload = function() {
