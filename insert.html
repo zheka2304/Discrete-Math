@@ -1,5 +1,7 @@
-<html>
-<body id="root">
+
+<html lang="en">
+
+<head>
 	<script type="text/javascript">
 		/* ALL LINKS AND CONSTANTS ARE STORED HERE */
 		// path to source code
@@ -14,9 +16,7 @@
 		// link to github with raw 
 		const GIT_REPOSITORY_URL = "http://localhost/"; //"https://raw.githubusercontent.com/zheka2304/Discrete-Math/master/"
 	</script>
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+	
 	<script type="text/javascript">
 
 		function load_url_content(url) {
@@ -113,6 +113,266 @@
 			}
 		};
 	</script>
+	
 
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+	<link rel="stylesheet" href="https://unpkg.com/bootstrap@4.1.1/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.3/css/mdb.min.css">
+	<style>
+		.card-comments img{width:4rem}	
+	</style>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://unpkg.com/popper.js@1.14.7/dist/umd/popper.min.js"></script>
+	<script src="https://unpkg.com/bootstrap@4.1.0/dist/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.3/js/mdb.min.js"></script>
+</head>
+
+<body class="grey lighten-3">
+
+    <!--Main Navigation-->
+    <header>
+
+        <!-- Navbar -->
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+            <div class="container">
+
+                <!-- Brand -->
+                <a class="navbar-brand waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
+                    <strong class="blue-text">MDB</strong>
+                </a>
+
+                <!-- Collapse -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Links -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    <!-- Left -->
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link waves-effect" href="#">Home
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">About MDB</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank">Free download</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link waves-effect" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">Free tutorials</a>
+                        </li>
+                    </ul>
+
+                    <!-- Right -->
+                    <ul class="navbar-nav nav-flex-icons">
+                        <li class="nav-item">
+                            <a href="https://www.facebook.com/mdbootstrap" class="nav-link waves-effect" target="_blank">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="https://twitter.com/MDBootstrap" class="nav-link waves-effect" target="_blank">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="nav-link border border-light rounded waves-effect"
+                                target="_blank">
+                                <i class="fab fa-github mr-2"></i>MDB GitHub
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+        </nav>
+        <!-- Navbar -->
+
+    </header>
+    <!--Main Navigation-->
+
+    <!--Main layout-->
+    <main class="mt-5 pt-5">
+        <div class="container">
+
+            <!--Section: Post-->
+            <section class="mt-4">
+
+                <!--Grid row-->
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-md-8 mb-4">
+                        
+                        
+                        <!--Reply-->
+                        <div class="card mb-3 wow fadeIn">
+                            <div class="card-header font-weight-bold">Leave a reply</div>
+                            <div class="card-body">
+
+                                <!-- Default form reply -->
+                                <form>
+
+                                    <!-- Comment -->
+                                    <div class="form-group">
+                                        <label for="replyFormComment">Your comment</label>
+                                        <textarea class="form-control" id="replyFormComment" rows="5"></textarea>
+                                    </div>
+
+                                    <!-- Name -->
+                                    <label for="replyFormName">Your name</label>
+                                    <input type="email" id="replyFormName" class="form-control">
+
+                                    <br>
+
+                                    <!-- Email -->
+                                    <label for="replyFormEmail">Your e-mail</label>
+                                    <input type="email" id="replyFormEmail" class="form-control">
+
+
+                                    <div class="text-center mt-4">
+                                        <button class="btn btn-info btn-md" type="submit">Post</button>
+                                    </div>
+                                </form>
+                                <!-- Default form reply -->
+
+
+
+                            </div>
+                        </div>
+                        <!--/.Reply-->
+
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-md-4 mb-4">
+
+                        <!--Card: Jumbotron-->
+                        <div class="card blue-gradient mb-4 wow fadeIn">
+
+                            <!-- Content -->
+                            <div class="card-body text-white text-center">
+
+                                <h4 class="mb-4">
+                                    <strong>Learn Bootstrap 4 with MDB</strong>
+                                </h4>
+                                <p>
+                                    <strong>Best & free guide of responsive web design</strong>
+                                </p>
+                                <p class="mb-4">
+                                    <strong>The most comprehensive tutorial for the Bootstrap 4. Loved by over 500 000 users. Video
+                                        and written versions available. Create your own, stunning website.</strong>
+                                </p>
+                                <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-md">Start free tutorial
+                                    <i class="fas fa-graduation-cap ml-2"></i>
+                                </a>
+
+                            </div>
+                            <!-- Content -->
+                        </div>
+                        <!--Card: Jumbotron-->
+
+                        <!--Card : Dynamic content wrapper-->
+                        <div class="card mb-4 text-center wow fadeIn">
+
+                            <div class="card-header">Do you want to get informed about new articles?</div>
+
+                            <!--Card content-->
+                            <div class="card-body">
+
+                                <!-- Default form login -->
+                                <form>
+
+                                    <!-- Default input email -->
+                                    <label for="defaultFormEmailEx" class="grey-text">Your email</label>
+                                    <input type="email" id="defaultFormLoginEmailEx" class="form-control">
+
+                                    <br>
+
+                                    <!-- Default input password -->
+                                    <label for="defaultFormNameEx" class="grey-text">Your name</label>
+                                    <input type="text" id="defaultFormNameEx" class="form-control">
+
+                                    <div class="text-center mt-4">
+                                        <button class="btn btn-info btn-md" type="submit">Sign up</button>
+                                    </div>
+                                </form>
+                                <!-- Default form login -->
+
+                            </div>
+
+                        </div>
+                        <!--/.Card : Dynamic content wrapper-->
+
+                        <!--Card-->
+                        <div class="card mb-4 wow fadeIn">
+
+                            <div class="card-header">Related articles</div>
+
+                            <!--Card content-->
+                            <div class="card-body">
+
+                                <ul class="list-unstyled">
+                                    <li class="media">
+                                        <img class="d-flex mr-3" src="https://mdbootstrap.com/img/Photos/Others/placeholder7.jpg" alt="Generic placeholder image">
+                                        <div class="media-body">
+                                            <a href="">
+                                                <h5 class="mt-0 mb-1 font-weight-bold">List-based media object</h5>
+                                            </a>
+                                            Cras sit amet nibh libero, in gravida nulla (...)
+                                        </div>
+                                    </li>
+                                    <li class="media my-4">
+                                        <img class="d-flex mr-3" src="https://mdbootstrap.com/img/Photos/Others/placeholder6.jpg" alt="An image">
+                                        <div class="media-body">
+                                            <a href="">
+                                                <h5 class="mt-0 mb-1 font-weight-bold">List-based media object</h5>
+                                            </a>
+                                            Cras sit amet nibh libero, in gravida nulla (...)
+                                        </div>
+                                    </li>
+                                    <li class="media">
+                                        <img class="d-flex mr-3" src="https://mdbootstrap.com/img/Photos/Others/placeholder5.jpg" alt="Generic placeholder image">
+                                        <div class="media-body">
+                                            <a href="">
+                                                <h5 class="mt-0 mb-1 font-weight-bold">List-based media object</h5>
+                                            </a>
+                                            Cras sit amet nibh libero, in gravida nulla (...)
+                                        </div>
+                                    </li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+                        <!--/.Card-->
+
+                    </div>
+                    <!--Grid column-->
+
+                </div>
+                <!--Grid row-->
+
+            </section>
+            <!--Section: Post-->
+
+        </div>
+    </main>
+    <!--Main layout-->
+
+    <!-- Initializations -->
+    <script type="text/javascript">
+        // Animations initialization
+        new WOW().init();
+    </script>
 </body>
+
 </html>
