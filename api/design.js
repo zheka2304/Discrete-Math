@@ -12,6 +12,9 @@ function append_card(card) {
 
 function json_to_html(json, params) {
 	params = params || {};
+	if (typeof(json) == "string") {
+		return json;
+	}
 	
 	var tag = json.tag;
 	if (params.callback) {
@@ -39,7 +42,7 @@ function json_to_html(json, params) {
 	for (var p in json) {
 		if (p != "inner" && p != "tag") {
 			var value = json[p];
-			if (params.prefix && p == "id") {
+			if (params.prefix && (p == "id" || p == "for")) {
 				value = params.prefix + value;
 			}
 			html += " " + p + "=" + "\"" + value + "\"";
@@ -127,4 +130,7 @@ function Card(id, params) {
 		}
 	}
 }
+
+
+
 

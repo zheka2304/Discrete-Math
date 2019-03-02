@@ -1,3 +1,4 @@
 [
-	"api/core.js"
+	"api/core.js",
+	"api/numbers.js"
 ]
