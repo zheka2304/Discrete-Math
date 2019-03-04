@@ -61,6 +61,19 @@ function WrapNumber(src, base) {
 		throw Exception("failed to wrap number: " + src);
 	}
 	
+	number.validate = function() {
+		while (this.length > 0 && this[this.length - 1] == 0) {
+			this.pop();
+		}
+		for (var i = 0; i < this.length; i++) {
+			var digit = this[i];
+			if (digit != digit || digit < 0 || digit >= this.base) {
+				throw Exception("Failed to validate number: invalid digit '" + digit + "' at position " + i);
+			}
+		}
+	}
+	
+	number.validate();
 	if (number.length == 0) {
 		number.push(0);
 	}

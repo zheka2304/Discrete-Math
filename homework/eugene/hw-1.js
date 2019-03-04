@@ -32,6 +32,7 @@ RegisterTask({
 	],
 	
 	output: function(number) {
+		number.validate();
 		return "Result: " + number.toString();
 	}
 });
