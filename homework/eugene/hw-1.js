@@ -25,17 +25,10 @@ RegisterTask({
 	caller: exec,
 	
 	inputs: [
-		new InputNumber("Input number of base 3: ")
+		new InputNumber("Input number of base 3: ", 3)
 	],
 	
 	output: function(number) {
-		var result = "";
-		for (var i in number) {
-			result = number[i] + result;
-		}
-		while (result[0] == "0" && result.length > 1) {
-			result = result.substr(1);
-		}
-		return "Result: " + result;
+		return "Result: " + number.toString();
 	}
 });

@@ -176,6 +176,12 @@ function RegisterTask(params) {
 var main_executable = new Executable({
 	url: GIT_REPOSITORY_URL + SOURCE_PATH
 });
+ 
+
+var github_link_block = document.getElementById("github_link");
+if (github_link_block) {
+	github_link_block.href = GIT_REPOSITORY_HUMAN_URL + SOURCE_PATH
+}
 
 main_executable.load();
 
