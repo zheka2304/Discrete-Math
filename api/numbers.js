@@ -62,7 +62,7 @@ function WrapNumber(src, base) {
 	}
 	
 	number.validate = function() {
-		while (this.length > 0 && this[this.length - 1] == 0) {
+		while (this.length > 1 && this[this.length - 1] == 0) {
 			this.pop();
 		}
 		for (var i = 0; i < this.length; i++) {
