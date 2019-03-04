@@ -11,14 +11,14 @@ function WrapNumber(src, base) {
 		var digit;
 		if (typeof(c) == "number") {
 			if (c < 0 || c >= base) {
-				throw new TypeError("failed to wrap number: " + src + " invalid digit '" + c + "' for base " + base);
+				throw Exception("failed to wrap number: " + src + " invalid digit '" + c + "' for base " + base);
 			}
 			return parseInt(c);
 		}
 		else {
 			var digit = parseInt(c + "", base);
 			if (isNaN(digit)) {
-				throw new TypeError("failed to wrap number: " + src + " invalid digit '" + c  + "' for base " + base);
+				throw Exception("failed to wrap number: " + src + " invalid digit '" + c  + "' for base " + base);
 			}
 			return digit;
 		}
@@ -58,7 +58,7 @@ function WrapNumber(src, base) {
 		}
 	}
 	else {
-		throw new TypeError("failed to wrap number: " + src);
+		throw Exception("failed to wrap number: " + src);
 	}
 	
 	if (number.length == 0) {

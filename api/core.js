@@ -1,3 +1,19 @@
+var Core = {
+	no_trace_math_exceptions: false
+}
+
+function Exception(message) {
+	var exception = new TypeError(message);
+	if (Core.no_trace_math_exceptions) {
+		exception.stack = "" + message;
+	}
+	return exception;
+}
+
+
+
+
+
 function InputString(label) {
 	this.build  = function(block, card, prefix) {
 		var html = json_to_html({

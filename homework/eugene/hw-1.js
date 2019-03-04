@@ -1,5 +1,12 @@
+// prevent stack traces on math exceptions
+Core.no_trace_math_exceptions = true;
+
 
 function exec(number) {
+	if (number < 2) {
+		throw Exception("passed number less than 2");
+	}
+	
 	if (number[0] < 2) {
 		number[0]++;
 		for (k = 1; number[k] == 0 && k < number.length; k++) {
@@ -12,10 +19,6 @@ function exec(number) {
 	}
 	
 	return number;
-}
-
-function process(number_str) {
-	
 }
 
 
