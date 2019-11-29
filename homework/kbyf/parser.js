@@ -31,11 +31,7 @@ function level1(data) {
 
 
 function level2(data) {
-	if (data.get(2) == "[]") {
-		data.index += 2;
-		level2(data);
-	}
-	else if (data.get(2) == "()") {
+	if (data.get(2) == "[]" || data.get(2) == "()") {
 		data.index += 2;
 		level2(data);
 	}
