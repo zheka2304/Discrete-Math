@@ -1,3 +1,4 @@
+Core.no_trace_math_exceptions = true; // disable stacktrace
 
 function base(data) {
 	if (data.end()) {
@@ -67,13 +68,6 @@ function exec(string) {
 	base(parser_data);
 	return "Input is correct"
 }
-
-try {
-	alert(exec("[()]()["))
-} catch(e) {
-	alert(e)
-}
-
 
 
 RegisterTask({
