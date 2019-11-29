@@ -72,7 +72,7 @@ function exec(string) {
 
 RegisterTask({
 	name: "Parser",
-	functions: [exec],
+	functions: [base, level1, level2],
 	caller: exec,
 	
 	inputs: [
