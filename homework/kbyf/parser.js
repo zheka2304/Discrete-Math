@@ -21,7 +21,7 @@ function level1(data) {
 		data.index++;
 		level2(data);
 		if (data.get() != ")") {
-			data.error("expected ]")
+			data.error("expected )")
 		}
 		data.index++;
 	} else {
