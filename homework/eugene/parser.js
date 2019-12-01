@@ -1,5 +1,6 @@
 Core.no_trace_math_exceptions = true; // disable stacktrace
 
+
 function base(data) {
 	if (data.end()) {
 		return;
@@ -59,12 +60,6 @@ function exec(string) {
 
 	base(parser_data);
 	return "Correct"
-}
-
-try {
-	alert(exec("[()()][([(())()])()[()()]]"))
-} catch(e) {
-	alert(e)
 }
 
 
