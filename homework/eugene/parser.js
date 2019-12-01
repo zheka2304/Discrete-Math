@@ -59,6 +59,9 @@ function exec(string) {
 	}
 
 	base(parser_data);
+	if (!parser_data.end()) {
+		parser_data.error("unexpected string termination");
+	}
 	return "Correct"
 }
 
