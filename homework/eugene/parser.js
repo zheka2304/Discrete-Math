@@ -5,7 +5,7 @@ function base(data) {
 	if (data.end()) {
 		return;
 	}
-	if (data.get() == "]" || data.get() == ")") {
+	if (data.index > 0 && (data.get() == "]" || data.get() == ")")) {
 		return;
 	}
 	brackets(data);
