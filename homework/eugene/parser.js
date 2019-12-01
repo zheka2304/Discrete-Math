@@ -54,7 +54,7 @@ function exec(string) {
 			for (var i = 0; i < this.index; i++) {
 				offset += " "
 			}
-			throw TypeError("error " + message + " at index " + this.index + "\n" + string + "\n" + offset + "^");
+			throw Exception("error " + message + " at index " + this.index + "\n" + string + "\n" + offset + "^");
 		}
 	}
 
