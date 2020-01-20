@@ -2,14 +2,10 @@ Core.no_trace_math_exceptions = true; // disable stacktrace
 
 
 function base(data) {
-	if (data.end()) {
-		return;
+	if (data.get() == "[" || data.get() == "(") {
+		brackets(data);
+		base(data);
 	}
-	if (data.get() == "]" || data.get() == ")") {
-		return;
-	}
-	brackets(data);
-	base(data);
 }
 
 function brackets(data) {
@@ -18,17 +14,19 @@ function brackets(data) {
 		brackets(data);
 		brackets(data);
 		base(data);
-		if (data.get() != "]") {
-			data.error("expected ]")
+		if (data.get() == "]") {	
+			data.index++;
+		} else {
+			data.error("expected ]");
 		}
-		data.index++;
 	} else if (data.get() == "(") {
 		data.index++;
 		base(data);
-		if (data.get() != ")") {
+		if (data.get() == ")") {
+			data.index++;
+		} else {
 			data.error("expected )")
 		}
-		data.index++;
 	} else {
 		data.error("expected opening bracket");
 	}
