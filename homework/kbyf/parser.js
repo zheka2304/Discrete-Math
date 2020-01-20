@@ -1,11 +1,10 @@
 Core.no_trace_math_exceptions = true; // disable stacktrace
 
 function base(data) {
-	if (data.end()) {
-		return;
+	if (data.get() == "[" || data.get() == "(") {
+		level1(data);
+		base(data);
 	}
-	level1(data);
-	base(data);
 }
 
 function level1(data) {
@@ -24,16 +23,26 @@ function level1(data) {
 			data.error("expected )")
 		}
 		data.index++;
-	} else {
-		data.error("expected opening bracket")
 	}
 }
 
 
 function level2(data) {
-	if (data.get(2) == "[]" || data.get(2) == "()") {
-		data.index += 2;
-		level2(data);
+	if (data.get() == "[") {
+		data.index++;
+		if (data.get() != "]") {
+			data.error("expected ]");
+			level2(data);
+		}
+		data.index++;
+	}
+	else if (data.get() == "(") {
+		data.index++;
+		if (data.get() != ")") {
+			data.error("expected )");
+			level2(data);
+		}
+		data.index++;
 	}
 }
 
